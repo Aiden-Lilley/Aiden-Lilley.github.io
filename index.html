@@ -17,17 +17,6 @@
             *:before, *:after{
                 box-sizing: inherit;
             }
-            .Header{
-                background: black;
-            }
-            
-            #titleMenu{
-                top:0;
-                left:0;
-                margin: auto;
-                width:100%;
-                position: fixed;
-            }
             
             .pageBody{
                 width: 100%;
@@ -115,6 +104,10 @@
                 padding:5px;
                 border: 1px solid  #444;
             }
+            
+            .titleMenu{
+                position: fixed;
+            }
 
             .menuList{
                 list-style: none;
@@ -176,8 +169,7 @@
 		
 	</head>
 	<body>
-        <div class="pageBody">
-                <header id="titleMenu">
+        <header id="titleMenu">
                     <h1 class="menuList">Aiden Lilley</h1>
                     <ul class="menuList">
                             <li>
@@ -198,111 +190,112 @@
 
                     </ul> 
             </header>
+        <div class="pageBody">
             <div class="sideMenu">
-            <aside class="profile">
-                    <img id="name" src="" alt="Picture of Me"/>
+                <aside class="profile">
+                        <img id="name" src="" alt="Picture of Me"/>
 
-                    <div id="name">
-                        <p id="name">Aiden Lilley</p>
-                    </div>
-                    <div id="socialLinks">
-                    <ul class="socialLinkVertical">
-                        <li>
-                            <img src="#" alt="facbook Logo"/>
-                        <a href="#">FaceBook
-                            </a>
-                        </li>
-                        <li>
-                            <img src="#" alt="facbook Logo"/>
-                        <a href="#">Twitter
-                            </a>
-                        </li>
-                        <li>
-                            <img src="#" alt="facbook Logo"/>
-                        <a href="#">Linkdin
-                            </a>
-                        </li>
-                        </ul>
-                    </div>
-                </aside>
+                        <div id="name">
+                            <p id="name">Aiden Lilley</p>
+                        </div>
+                        <div id="socialLinks">
+                        <ul class="socialLinkVertical">
+                            <li>
+                                <img src="#" alt="facbook Logo"/>
+                            <a href="#">FaceBook
+                                </a>
+                            </li>
+                            <li>
+                                <img src="#" alt="facbook Logo"/>
+                            <a href="#">Twitter
+                                </a>
+                            </li>
+                            <li>
+                                <img src="#" alt="facbook Logo"/>
+                            <a href="#">Linkdin
+                                </a>
+                            </li>
+                            </ul>
+                        </div>
+                    </aside>
             </div>
-            <div class="Contents">
-                                    
-                
-                <form>
-                    <div>
-                        <ul style="list-style-type:none">
-                            <li class="contactFromList">
-                            <input placeholder="First Name..."
-                                alt="Enter First Name"
-                                required="required"
-                                   />
-                                <input placeholder="Last Name..."
-                                alt="Enter Last Name"
-                                required="required"
-                                   />
-                            </li>
-                            <li class="contactFromList">
-                                <input type="email"
-                                placeholder="email..."
-                                required="email Required"
-                                   />
-                            </li>
-                            <li class="contactFromList">
-                            <input id="password" 
-                                type="password"
-                                pattern="[a-zA-Z0-9 !-]+"
-                                placeholder="example"
-                                invalid="border-color=red"
-                                minlength=4
-                                maxlength=16
-                                required
-                            />
-                            </li>
-                            <script>
-                                const validationErrorClass = 'validation-error'
-                                const parentErrorClass = 'has-validation-error'
-                                const inputs = document.querySelectorAll('input, select, textarea')
-                                inputs.forEach(function (input) {
-                                  function checkValidity (options) {
-                                    const insertError = options.insertError
-                                    const parent = input.parentNode
-                                    const error = parent.querySelector(`.${validationErrorClass}`)
-                                      || document.createElement('div')
+            <div class="mainBody">
+                <div class="Contents">
+                    <form>
+                        <div>
+                            <ul style="list-style-type:none">
+                                <li class="contactFromList">
+                                <input placeholder="First Name..."
+                                    alt="Enter First Name"
+                                    required="required"
+                                       />
+                                    <input placeholder="Last Name..."
+                                    alt="Enter Last Name"
+                                    required="required"
+                                       />
+                                </li>
+                                <li class="contactFromList">
+                                    <input type="email"
+                                    placeholder="email..."
+                                    required="email Required"
+                                       />
+                                </li>
+                                <li class="contactFromList">
+                                <input id="password" 
+                                    type="password"
+                                    pattern="[a-zA-Z0-9 !-]+"
+                                    placeholder="example"
+                                    invalid="border-color=red"
+                                    minlength=4
+                                    maxlength=16
+                                    required
+                                />
+                                </li>
+                                <script>
+                                    const validationErrorClass = 'validation-error'
+                                    const parentErrorClass = 'has-validation-error'
+                                    const inputs = document.querySelectorAll('input, select, textarea')
+                                    inputs.forEach(function (input) {
+                                      function checkValidity (options) {
+                                        const insertError = options.insertError
+                                        const parent = input.parentNode
+                                        const error = parent.querySelector(`.${validationErrorClass}`)
+                                          || document.createElement('div')
 
-                                    if (!input.validity.valid && input.validationMessage) {
-                                      error.className = validationErrorClass
-                                      error.textContent = input.validationMessage
+                                        if (!input.validity.valid && input.validationMessage) {
+                                          error.className = validationErrorClass
+                                          error.textContent = input.validationMessage
 
-                                      if (insertError) {
-                                        parent.insertBefore(error, input)
-                                        parent.classList.add(parentErrorClass)
+                                          if (insertError) {
+                                            parent.insertBefore(error, input)
+                                            parent.classList.add(parentErrorClass)
+                                          }
+                                        } else {
+                                          parent.classList.remove(parentErrorClass)
+                                          error.remove()
+                                        }
                                       }
-                                    } else {
-                                      parent.classList.remove(parentErrorClass)
-                                      error.remove()
-                                    }
-                                  }
-                                  input.addEventListener('input', function () {
-                                    // We can only update the error or hide it on input.
-                                    // Otherwise it will show when typing.
-                                    checkValidity({insertError: false})
-                                  })
-                                  input.addEventListener('invalid', function (e) {
-                                    // prevent showing the default display
-                                    e.preventDefault()
+                                      input.addEventListener('input', function () {
+                                        // We can only update the error or hide it on input.
+                                        // Otherwise it will show when typing.
+                                        checkValidity({insertError: false})
+                                      })
+                                      input.addEventListener('invalid', function (e) {
+                                        // prevent showing the default display
+                                        e.preventDefault()
 
-                                    // We can also create the error in invalid.
-                                    checkValidity({insertError: true})
-                                  })
-                                })
-                            </script>
-                            <li class="contactFromList">
-                                <button type="submit">Register</button>
-                            </li>
-                        </ul>
-                    </div>
-                </form>
+                                        // We can also create the error in invalid.
+                                        checkValidity({insertError: true})
+                                      })
+                                    })
+                                </script>
+                                <li class="contactFromList">
+                                    <button type="submit">Register</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         			
