@@ -1,0 +1,310 @@
+<html>
+	<head>
+        <title>QA</title>
+        <style>
+            html{
+                padding: 0;
+                border: 0;
+                margin: 0;
+            }
+            *{
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                background:#eee;
+            }
+            
+            *:before, *:after{
+                box-sizing: inherit;
+            }
+            .Header{
+                background: black;
+            }
+            
+            #titleMenu{
+                top:0;
+                left:0;
+                margin: auto;
+                width:100%;
+                position: fixed;
+            }
+            
+            .pageBody{
+                width: 100%;
+                height: 10000px;
+                position: absolute;
+                background: #eee;
+                border:2px solid red;
+            }
+            
+            .Contents{
+                width: 900px;
+                padding: 2%;
+                float: none;
+                border: 1px solid #444;
+
+            }
+            
+            .profile{
+                margin-top: 10px;
+                width: 25%;
+                padding: 2%;
+                border: 1px solid green;
+            }
+            
+            #name div{
+                float: none;
+                margin-left: auto;
+                margin-right: auto;
+                margin-left:auto;
+                margin-right: auto;
+            }
+                        
+            #name img{
+                height: 100px;
+                width: 100px;
+                margin-left: auto;
+                margin-right:auto;
+                border: 3px solid rgb(0,0,0,0.3);
+            }
+
+            
+            #name p{
+                border: 2px solid #999999;
+                text-align: center;
+                color: cadetblue;
+            }
+            
+            #socialLinks{
+                width: 30px;
+                display: inline-block;
+            }
+            
+            .socialLinkVertical {
+                list-style: none;
+                display: inline-block;
+                border: 1px solid black;
+                
+            }
+            
+            .socialLinkVertical img{
+                width:20px;
+                height: 20px;
+                border: 1px solid red;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .socialLinkVertical li{
+                display: inline-block;
+                margin:0;
+                padding:0;
+            }
+            
+            .socialLinkVertical a{
+                text-decoration: none;
+                color: #444;
+            }
+            
+            .socialLinkVertical a:hover{
+                background: rgb(0,0,0,0.1);
+            }
+
+            
+            .contactFromList{
+                padding:5px;
+                border: 1px solid  #444;
+            }
+
+            .menuList{
+                list-style: none;
+                display: flex;
+                flex:4;
+                flex-flow: row wrap;
+                justify-content: flex-start;
+                margin: 0;
+                background: rgba(0,0,0,0.1);
+
+            }
+            
+
+            .menuList a{
+                text-decoration: none;
+                padding: 1em;
+                color: #eee;
+                background: #444;
+                display: block;
+            }
+            
+            .menuList a:hover{
+                background:rgba(255, 255, 255, 0.1);
+            }
+            
+            .menuList li{
+                list-style-type: none;
+                text-align: center;
+                border-top: 1px solid rgba(255, 255, 255, 0.3);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                flex:3;
+                background:  #444;
+            }
+            
+            .menuList h1{
+                text-align: center;
+                justify-content: center;
+                flex: 1;
+                
+            }
+            
+            @media all and (max-width: 800px) {
+              .menuList {
+                justify-content: center;
+              }
+            }
+            
+            @media all and (max-width: 600px) {
+              .menuList {
+                -webkit-flex-flow: column wrap;
+                flex-flow: column wrap;
+                padding: 0;
+                  align-content: stretch;
+              }
+            input.invalid{
+                border-color:red;
+                }
+        </style>
+		
+	</head>
+	<body>
+        <div class="pageBody">
+                <header id="titleMenu">
+                    <h1 class="menuList">Aiden Lilley</h1>
+                    <ul class="menuList">
+                            <li>
+                                <a href="CV.html">
+                                Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="CV.html">
+                                CV
+                                </a>
+                            </li>
+                            <li>
+                                <a href="CV.html">
+                                Contact
+                                </a>
+                            </li>
+
+                    </ul> 
+            </header>
+            <div class="sideMenu">
+            <aside class="profile">
+                    <img id="name" src="" alt="Picture of Me"/>
+
+                    <div id="name">
+                        <p id="name">Aiden Lilley</p>
+                    </div>
+                    <div id="socialLinks">
+                    <ul class="socialLinkVertical">
+                        <li>
+                            <img src="#" alt="facbook Logo"/>
+                        <a href="#">FaceBook
+                            </a>
+                        </li>
+                        <li>
+                            <img src="#" alt="facbook Logo"/>
+                        <a href="#">Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <img src="#" alt="facbook Logo"/>
+                        <a href="#">Linkdin
+                            </a>
+                        </li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+            <div class="Contents">
+                                    
+                
+                <form>
+                    <div>
+                        <ul style="list-style-type:none">
+                            <li class="contactFromList">
+                            <input placeholder="First Name..."
+                                alt="Enter First Name"
+                                required="required"
+                                   />
+                                <input placeholder="Last Name..."
+                                alt="Enter Last Name"
+                                required="required"
+                                   />
+                            </li>
+                            <li class="contactFromList">
+                                <input type="email"
+                                placeholder="email..."
+                                required="email Required"
+                                   />
+                            </li>
+                            <li class="contactFromList">
+                            <input id="password" 
+                                type="password"
+                                pattern="[a-zA-Z0-9 !-]+"
+                                placeholder="example"
+                                invalid="border-color=red"
+                                minlength=4
+                                maxlength=16
+                                required
+                            />
+                            </li>
+                            <script>
+                                const validationErrorClass = 'validation-error'
+                                const parentErrorClass = 'has-validation-error'
+                                const inputs = document.querySelectorAll('input, select, textarea')
+                                inputs.forEach(function (input) {
+                                  function checkValidity (options) {
+                                    const insertError = options.insertError
+                                    const parent = input.parentNode
+                                    const error = parent.querySelector(`.${validationErrorClass}`)
+                                      || document.createElement('div')
+
+                                    if (!input.validity.valid && input.validationMessage) {
+                                      error.className = validationErrorClass
+                                      error.textContent = input.validationMessage
+
+                                      if (insertError) {
+                                        parent.insertBefore(error, input)
+                                        parent.classList.add(parentErrorClass)
+                                      }
+                                    } else {
+                                      parent.classList.remove(parentErrorClass)
+                                      error.remove()
+                                    }
+                                  }
+                                  input.addEventListener('input', function () {
+                                    // We can only update the error or hide it on input.
+                                    // Otherwise it will show when typing.
+                                    checkValidity({insertError: false})
+                                  })
+                                  input.addEventListener('invalid', function (e) {
+                                    // prevent showing the default display
+                                    e.preventDefault()
+
+                                    // We can also create the error in invalid.
+                                    checkValidity({insertError: true})
+                                  })
+                                })
+                            </script>
+                            <li class="contactFromList">
+                                <button type="submit">Register</button>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+        			
+	</body>
+</html>
