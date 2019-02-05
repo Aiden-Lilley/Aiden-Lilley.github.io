@@ -1,0 +1,78 @@
+<html>
+    <head>
+    
+        <script type="text/javascript">
+            'use strict';
+            function maker(x,y){
+                console.log("making person");
+                return (typeof x == typeof "" && typeof y == typeof 1) ?{
+                    name:x,
+                    age:y
+                } : null;
+            }
+            
+            let people = [];
+            
+            function showOutput(){
+                !!document.getElementById("outputP") ? "" : document.getElementById("outputDiv").innerHTML += '<p id="outputP"></p>' ;
+                document.getElementById("showOutputBut").setAttribute("style",'visibility:hidden');
+                document.getElementById("hideOutputBut").setAttribute("style",'visibility:visible');
+                showPeople();
+            }
+            
+            function showPeople(){
+                document.getElementById("outputP").innerHTML = "";
+                people.forEach(function(element,index){
+                    document.getElementById("outputP").innerHTML += people[index].name ? `Person ${people[index].name} is  ${people[index].age}<br/>` : document.getElementById("outputP").value == '"There are no people registered!" \n <br/>' ? "hello": `There are no people registered!<br/>`;
+                })
+            }
+            
+            function enterPerson(){
+                let personName = document.getElementById("name").value;
+                let personAge = document.getElementById("age").value;
+                console.log(people.length>0?people.length : 0);
+                console.log(personName && personAge ? "true" : "false");
+                people[people.length>0?people.length : 0] = personName && personAge ? maker(personName,Number(personAge)) : document.getElementById("outputP").innerHTML = `you did not enter a valid input for the 'name' and 'age' input`;
+                showPeople();
+            }
+            
+            function deletePersonView(){
+                document.getElementById("showOutputBut").setAttribute("style",'visibility:visible');
+                document.getElementById("hideOutputBut").setAttribute("style",'visibility:hidden');
+                document.getElementById("outputDiv").removeChild(document.getElementById("outputP"));
+            }
+
+            let person = maker("Administrator",23);
+            
+            let lowerBounds = 25;
+            
+            let upperBounds = 90;
+            
+ 
+                ;
+
+            
+            console.log(`person is between 20 and 40: ${person != null && ((person.age>20 && person.age<40) || person.name === 'Administrator'&& person.age != underfined)}\r\n`);
+            
+            document.write((person != null) ? (
+                                (person.age>lowerBounds && person.age<upperBounds) ? `The person ${person.name} is ${person.age} years old which is old enough!` 
+                                : `The person ${person.name} is ${person.age} years old which is not within the site age limit of ${lowerBounds}-${upperBounds} years`
+                                )
+                           : "Wrong Data Type for person"
+                          );
+            
+        </script>
+    </head>
+    <body>
+
+        <form id="inputPerson">
+            <input id="name" placeholder="FirstName" type="text"/>
+            <input id="age" placeholder="age" type="number"/>
+            <button type="button" onclick="enterPerson()">Enter Person</button>
+            <button id="showOutputBut" type="button" onclick="showOutput()">Show output</button>
+            <button id="hideOutputBut" type="button" onclick="deletePersonView()" >Hide People Output</button>
+        </form>
+        <div id="outputDiv">
+        </div>
+    </body>
+</html>

@@ -1,0 +1,201 @@
+<html>
+    <head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container{
+            width: 100%;
+            border: 1px solid #cc9966;
+        }
+        .menucontainer{
+            height: 40px;
+            border: 1px solid #cc9966;
+        }
+        
+        .menu{
+            width: 100%;
+            height: 40px;
+            position:fixed;
+            display: grid;
+            grid-auto-columns: minmax(1fr,1fr); 
+            background: rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid #cc9966;
+        }
+        
+        .sideMenuWrapper{
+            border: 2px solid red;
+            display: block;
+            float: left;
+            height: 100%;
+            width: 20%;
+        }
+        
+        #bodyContainer{
+            box-sizing: border-box;
+            display: inline-block;
+            width: 100%;
+            border: 2px solid red;
+        }
+        
+        .sideMenu{
+            height: 1000px;
+            float: left;
+            margin: 0;
+            width: 20%;
+            background:cc9966;
+        }
+        
+        .mainContentWrapper{
+            display: block;
+            width: 79%;
+            float: right;
+            border: 1px solid green;
+        }
+        
+        .mainContent{
+            height: 1000px;
+            margin: 10px;
+            margin: auto;
+            float: none;
+            width: 1000px;
+            box-shadow: 5px 10px 20px #aaaaaa;
+            background-color: floralwhite;
+        }
+        
+        .menuBox{
+            border: 1px solid blues
+        }
+        .menuItem{
+            color: black;
+        }
+        
+        div.menuItem{
+            text-decoration: none;
+            color : white;
+            text-align: center;  
+            grid-column: span 1;
+            grid-row: 1;
+            border: 1px solid blue;
+        }
+        .menuItem a{
+            text-decoration: none;
+            color : white;
+            text-align: center;
+            display: table;
+            background: lightgrey;
+            width: 100%;
+            height: 100%;
+        }
+            
+        .menuItem a:hover{
+            background:rgba(0, 0, 0, 0.3);
+        }
+        
+        div.menuWrapper{
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        #title{
+            text-decoration: none;
+            grid-column: span 1;
+            grid-row: 1;
+        }
+        
+        #title a{
+            text-decoration: none;
+            color : white;
+            text-align: center;
+            display: table;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #header{
+            color: slategray;
+        }
+        
+
+
+        
+
+            /*@media all and (max-width: 800px) {
+              .menuList {
+                justify-content: center;
+              }
+            }*/
+            
+            /*@media all and (max-width: 600px) {
+              .menuList {
+                -webkit-flex-flow: column wrap;
+                flex-flow: column wrap;
+                padding: 0;
+                  align-content: stretch;
+              }*/
+            input.invalid{
+                border-color:red;
+                }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+        <div class="menucontainer">
+            <div class = "menu">
+                        <div id="title">
+                            <a href="index.html" >        
+                                <div class="menuWrapper">
+                                    <h1 id="header">Aiden Lilley</h1>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="menuItem">
+                            <a href="CV.html" >        
+                                <div class="menuWrapper">
+                                    Home
+                                </div>
+                            </a>
+                        </div>
+                         <div class="menuItem">
+                            <a href="CV.html" >        
+                                <div class="menuWrapper">
+                                    CV
+                                </div>
+                            </a>
+                        </div>
+                         <div class="menuItem">
+                            <a href="CV.html" >        
+                                <div class="menuWrapper">
+                                    Contact
+                                </div>
+                            </a>
+                        </div> 
+                <div class="menuItem">
+                            <a href="CV.html" >        
+                                <div class="menuWrapper">
+                                    Contact
+                                </div>
+                            </a>
+                        </div> 
+            </div>
+        </div>
+        </div>
+        <div id="bodyContainer">
+            <div class="sideMenuWrapper">
+                <div class="menuBox">
+                    
+                </div>
+            </div>
+            <div class="mainContentWrapper">
+                <div class="mainContent">
+                    hello
+                    </div>
+            </div>
+        </div>
+    </body>
+    
+</html>

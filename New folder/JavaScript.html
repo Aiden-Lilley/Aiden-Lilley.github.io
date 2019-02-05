@@ -1,0 +1,35 @@
+<html>
+<head>
+    </head>
+    <body>
+        <p>Before the script</p>
+        <script>
+            'use strict';
+            let msg = 'He said my "name is matt"';
+            let num = 1;
+            let num2 = "1";
+            let result = num + Number(num2);
+            let object = [
+               "one",
+               "two",
+                "three"                
+            ];
+            let message = "hello";
+            console.log(message.toUpperCase());
+            console.log(msg);
+            console.log(result);
+            for(let a in object){
+                console.log(a);
+            }
+            object[object.length] = "four";
+            for(let a in object){
+                console.log(a);
+            }
+            object.pop(2);
+            for(let a in object){
+                console.log(a);
+            }
+        </script>
+        <p>After the script</p>
+    </body>
+</html>
