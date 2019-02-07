@@ -1,201 +1,449 @@
-<html>
+<!DOCTYPE html5>
+<html >
     <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script type="text/javascript">
+        'use strict';
+        var elementLocations = {};
+        function openTab(element, i, x, y) {
+            console.log(x);
+            let tab = element ? document.getElementById("fullMenuContainer") : "";
+            
+            document.getElementById("movableMenu").style.width;
+            let interval = typeof i == typeof 2 ? i : 1;
+            let xmovement = typeof x == typeof 1 ? x : 1;
+            let ymovement = typeof y == typeof 1 ? y : 1;
+            console.log(`moving ${xmovement}px to the left.`)
+            for (let xc = 0; xmovement > 0 ? xc < xmovement : xc > xmovement; xmovement > 0 ? xc += interval : xc -= interval) {
+
+                for (let yc = 0; ymovement > 0 ? yc < ymovement : yc > ymovement; ymovement > 0 ? yc += interval : yc -= interval) {
+                    tab.style.top = ymovement;
+                    console.log("moving up");
+                }
+                console.log(`${xc}px`);
+                tab.style.left = `${xc}px`;
+            }
+            
+            
+
+        }
+        
+        function getElementPos(element){
+            let tab = element ? document.getElementById("fullMenuContainer") : "";
+            console.log("added element location");
+            elementLocations[element] = {
+                    x:tab.offsetLeft,
+                    y:tab.offsetTop
+                
+            };
+            for(element in elementLocations){
+                console.log(`${elementLocations[element].x} ${elementLocations[element].y}`);
+            }
+        }
+        
+        function tabControl(element, i, x, y){
+            console.log(x);
+            let tab = element ? document.getElementById("fullMenuContainer") : "";
+            console.log(tab);
+            let interval = typeof i == typeof 2 ? i : 1;
+            let xmovement = typeof x == typeof 1 ? x : 1;
+            let ymovement = typeof y == typeof 1 ? y : 1;
+            tab.getAttribute("tabOpen") ? (tab.getAttribute('tabOpen') == 'true' ? (tab.setAttribute('tabOpen','false'),openTab(element,i,x,y)) : (tab.setAttribute('tabOpen','true')),openTab(element,i,elementLocations[element].x,elementLocations[element].y)) : (tab.setAttributeNode(document.createAttribute('tabOpen')),tab.setAttribute('tabOpen','true'),openTab(element,i,x,y));
+            
+        }
+    </script>
     <style>
-        *{
+        :root {
+            --main-pg-color: white;
+            --side-menu-border-color: #FF9933;
+            --side-menu-back-ground-color: #666666;
+            --social-links-border: rgb(255, 255, 0, 0.4);
+        }
+
+        * {
             margin: 0;
             padding: 0;
         }
-        
-        .container{
+
+        .container {
             width: 100%;
-            border: 1px solid #cc9966;
         }
-        .menucontainer{
+
+        .menucontainer {
             height: 40px;
-            border: 1px solid #cc9966;
         }
-        
-        .menu{
-            width: 100%;
-            height: 40px;
-            position:fixed;
+
+        .sideMenuContainer {
+            overflow: hidden;
+            grid-auto-flow: row;
+            margin-top: 10%;
+        }
+
+        #fullMenuContainer {
             display: grid;
-            grid-auto-columns: minmax(1fr,1fr); 
-            background: rgba(0,0,0,0.1);
-            text-align: center;
-            border: 1px solid #cc9966;
+            grid-auto-columns: minmax(10px, auto);
+            position: fixed;
+            grid-row-gap: 3px;
         }
-        
-        .sideMenuWrapper{
-            border: 2px solid red;
+
+        .tab {
+            display: inline-block;
+            grid-column: 2;
+            border: 2px solid var(--side-menu-border-color);
+            border-left: 0px;
+            background: var(--side-menu-border-color);
+            border-radius: 0 10px 0 0;
+            width: 20px;
+            height: 50px;
+            overflow: hidden;
+        }
+
+        #pullTab {
             display: block;
-            float: left;
+
             height: 100%;
-            width: 20%;
+            background: rgb(255, 255, 255, 0.4);
         }
-        
-        #bodyContainer{
+
+        .menuBox {
+            position: relative;
+            border-radius: 0 4px 5px 0px;
+            border: 2px solid var(--side-menu-border-color);
+            border-left: 0px;
+            width: 200px;
+            height: 350px;
+            display: grid;
+            grid-template-columns: 1fr 9fr 1fr;
+            grid-template-rows: 3fr 1fr 5fr;
+            grid grid-template-areas:
+                "a b a"
+                "a b a"
+                "a b a";
+            background: var(--side-menu-back-ground-color);
+
+        }
+
+        .profileMenuBox {
+            box-sizing: border-box;
+            grid-column: 2;
+            grid-row: auto;
+            display: table;
+            height: 98%;
+            margin-bottom: 1%;
+            margin-top: 1%;
+            overflow: hidden;
+        }
+
+
+        .profileSocialLinksWrapper,
+        .profileWrapper,
+        .profileNameWrapper {
+            display: table-cell;
+            vertical-align: middle;
+            text-decoration: none;
+        }
+
+        .profileNameWrapper {
+            text-align: center;
+            color: rgb(255, 255, 255, 0.4);
+        }
+
+        .profileSocialLinksWrapper a {
+            text-decoration: none;
+        }
+
+        .profileSocialLinksWrapper a:hover>div.socialBlock {
+            text-decoration: none;
+            background: rgb(255, 255, 255, 0.1);
+        }
+
+        .profileWrapper {
+
+            height: 100px;
+            display: block;
+            border: 1px solid var(--side-menu-border-color);
+            border-radius: 100%;
+            overflow: hidden;
+        }
+
+        .profilePic a {
+            text-decoration: none;
+        }
+
+        .profilePic a:hover {
+            background: rgb(0, 0, 0, 0.1);
+        }
+
+        img#profilePic {
+            margin-left: auto;
+            margin-right: auto;
+            color: red;
+            width: 100px;
+            height: 100px;
+        }
+
+        #profilePic {
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+        }
+
+        socialLink {
+            background: rgb(255, 255, 255, 0.1);
+
+        }
+
+        .socialBlock {
+            background: rgb(255, 255, 255, 0.1);
+            display: block;
+            border-bottom: 2px solid rgb(0, 0, 0, 0.1);
+            border-top: 2px solid rgb(255, 255, 255, 0.1);
+        }
+
+        #socialLinks {
+            border-radius: 4px 10px 4px 15px;
+            border: 2px solid var(--social-links-border);
+            background: rgb(0, 0, 0, 0.05);
+        }
+
+        .socialLink img {
+            display: table-cell;
+            width: 32px;
+            height: 32px;
+        }
+
+        .socialLink p {
+            color: white;
+            margin-left: 20px;
+            overflow: hidden;
+        }
+
+        div.socialLink {
+            text-align: left;
+            overflow: hidden;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .menu {
+            width: 100%;
+            height: 40px;
+            position: fixed;
+            display: grid;
+            grid-auto-columns: minmax(1fr, 1fr);
+            grid-column-gap: 0px;
+            background: rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+
+        #bodyContainer {
             box-sizing: border-box;
             display: inline-block;
             width: 100%;
-            border: 2px solid red;
         }
-        
-        .sideMenu{
-            height: 1000px;
-            float: left;
-            margin: 0;
-            width: 20%;
-            background:cc9966;
-        }
-        
-        .mainContentWrapper{
+
+
+        .mainContentWrapper {
             display: block;
-            width: 79%;
+            width: 100%;
             float: right;
-            border: 1px solid green;
         }
-        
-        .mainContent{
-            height: 1000px;
+
+        .mainContent {
+            height: 1080px;
             margin: 10px;
             margin: auto;
             float: none;
             width: 1000px;
-            box-shadow: 5px 10px 20px #aaaaaa;
-            background-color: floralwhite;
+            text-align: center;
         }
-        
-        .menuBox{
-            border: 1px solid blues
-        }
-        .menuItem{
+
+        .menuBox {}
+
+        .menuItem {
             color: black;
         }
-        
-        div.menuItem{
+
+        div.menuItem {
             text-decoration: none;
-            color : white;
-            text-align: center;  
+            color: white;
+            text-align: center;
             grid-column: span 1;
             grid-row: 1;
-            border: 1px solid blue;
         }
-        .menuItem a{
+
+        .menuItem a {
             text-decoration: none;
-            color : white;
+            color: white;
             text-align: center;
             display: table;
             background: lightgrey;
             width: 100%;
             height: 100%;
         }
-            
-        .menuItem a:hover{
-            background:rgba(0, 0, 0, 0.3);
+
+        .menuItem a:hover {
+            background: rgba(0, 0, 0, 0.3);
         }
-        
-        div.menuWrapper{
+
+        div.menuWrapper {
             display: table-cell;
             text-align: center;
             vertical-align: middle;
         }
-        
-        #title{
+
+        #title {
             text-decoration: none;
             grid-column: span 1;
             grid-row: 1;
         }
-        
-        #title a{
+
+        #title a {
             text-decoration: none;
-            color : white;
+            color: white;
             text-align: center;
             display: table;
             width: 100%;
             height: 100%;
         }
-        
-        #header{
+
+        #header {
             color: slategray;
         }
-        
 
 
-        
 
-            /*@media all and (max-width: 800px) {
+
+
+
+        /*@media all and (max-width: 800px) {
               .menuList {
                 justify-content: center;
               }
             }*/
-            
-            /*@media all and (max-width: 600px) {
+
+        /*@media all and (max-width: 600px) {
               .menuList {
                 -webkit-flex-flow: column wrap;
                 flex-flow: column wrap;
                 padding: 0;
                   align-content: stretch;
               }*/
-            input.invalid{
-                border-color:red;
-                }
-        </style>
-    </head>
-    <body>
-    <div class="container">
+        input.invalid {
+            border-color: red;
+        }
+    </style>
+
+</head>
+
+<body ng-app="" onload="getElementPos('movableMenu')">
+    <div ng-init="name='Aiden Lilley'" class="container">
+
         <div class="menucontainer">
-            <div class = "menu">
-                        <div id="title">
-                            <a href="index.html" >        
-                                <div class="menuWrapper">
-                                    <h1 id="header">Aiden Lilley</h1>
-                                </div>
-                            </a>
+            <div class="menu">
+                <div id="title">
+                    <a href="index.html">
+                        <div ng-app="" class="menuWrapper">
+                            <h1 id="header">{{name}}</h1>
                         </div>
-                        <div class="menuItem">
-                            <a href="CV.html" >        
-                                <div class="menuWrapper">
-                                    Home
-                                </div>
-                            </a>
-                        </div>
-                         <div class="menuItem">
-                            <a href="CV.html" >        
-                                <div class="menuWrapper">
-                                    CV
-                                </div>
-                            </a>
-                        </div>
-                         <div class="menuItem">
-                            <a href="CV.html" >        
-                                <div class="menuWrapper">
-                                    Contact
-                                </div>
-                            </a>
-                        </div> 
+                    </a>
+                </div>
                 <div class="menuItem">
-                            <a href="CV.html" >        
-                                <div class="menuWrapper">
-                                    Contact
-                                </div>
-                            </a>
-                        </div> 
-            </div>
-        </div>
-        </div>
-        <div id="bodyContainer">
-            <div class="sideMenuWrapper">
-                <div class="menuBox">
-                    
+                    <a href="CV.html">
+                        <div class="menuWrapper">
+                            Home
+                        </div>
+                    </a>
+                </div>
+                <div class="menuItem">
+                    <a href="CV.html">
+                        <div class="menuWrapper">
+                            CV
+                        </div>
+                    </a>
+                </div>
+                <div class="menuItem">
+                    <a href="CV.html">
+                        <div class="menuWrapper">
+                            Contact
+                        </div>
+                    </a>
+                </div>
+                <div class="menuItem">
+                    <a href="CV.html">
+                        <div class="menuWrapper">
+                            Contact
+                        </div>
+                    </a>
                 </div>
             </div>
-            <div class="mainContentWrapper">
-                <div class="mainContent">
-                    hello
+        </div>
+    </div>
+    <div id="bodyContainer">
+        <div id="openable" class="sideMenuContainer">
+            <div id="fullMenuContainer">
+                <div id="movableMenu" class="menuBox">
+                    <div id="profilePic" class="profileMenuBox">
+                        <div class="profileWrapper">
+                            <a href="#">
+                                <img id="profilePic" src="media/profile.png" alt="pic of me" />
+                            </a>
+                        </div>
                     </div>
+                    <div id="nameBox" class="profileMenuBox">
+                        <div class="profileNameWrapper">
+                            <h2 id="name">{{name}}</h2>
+                        </div>
+                    </div>
+                    <div id="socialLinks" class="profileMenuBox">
+                        <div class="profileSocialLinksWrapper">
+                            <a href="https://www.facebook.com/aidenlilley">
+                                <div class="socialBlock">
+                                    <div class="socialLink">
+                                        <img src="media/fb-icon.png" alt="pic Of FaceBook" />
+                                    </div>
+                                    <div class="socialLink">
+                                        <p>FaceBook</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div class="socialBlock">
+                                    <div class="socialLink">
+                                        <img src="media/tw-icon.png" alt="pic Of Twitter" />
+                                    </div>
+                                    <div class="socialLink">
+                                        <p>Twitter</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="https://www.instagram.com/aidenlilley">
+                                <div class="socialBlock">
+                                    <div class="socialLink">
+                                        <img src="media/in-icon.png" alt="pic Of LinkdIn" />
+                                    </div>
+                                    <div class="socialLink">
+                                        <p>LinkedIn</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab">
+                    <div id="pullTab"  onclick="tabControl('movableMenu',2,-Number(document.getElementById('movableMenu').offsetWidth),0)">
+
+                    </div>
+                </div>
             </div>
         </div>
-    </body>
+        <div class="mainContentWrapper">
+            <div class="mainContent">
+                hello
+            </div>
+        </div>
+    </div>
+</body>
     
 </html>

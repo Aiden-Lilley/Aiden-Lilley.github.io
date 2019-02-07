@@ -2,29 +2,159 @@
     <head>
         <style>
             *{
-                border: 1px solid black;
             }
             .testDiv{
                 border: 0px;
                 width: 100%;
-                height: 100%;
                 display: table;
             }
-            .menuBox{
-                width: 15%;
-                height: 50%;
-                margin-top: 100px;
+            
+            .sideMenuContainer{
                 display: grid;
-                grid-row: 3fr 1fr 5fr; 
+                grid-auto-columns:minmax(10px,auto);
                 position: fixed;
-                background: black;
+                grid-row-gap:3px;
+                overflow: hidden;
+                grid-auto-flow: row;
+                margin-top: 10%; 
             }
             
-            .profileImageBox{
-                position: table;
-                background: white;
+            .tab{
+                grid-column: 2;
+                border: 2px solid #FF9933;
+                border-left: 0px;
+                background: #FF9933;
+                border-radius: 0 10px 0 0;
+                width: 20px;
+                height: 50px;
+                overflow: hidden;
             }
-            #nameBox{
+            
+            #pullTab{
+                display: block;
+                height: 100%;
+                background: rgb(255,255,255,0.4);
+            }
+            
+            .menuBox{
+                border-radius: 0 4px 5px  0px;
+                border: 2px solid #FF9933;
+                border-left: 0px solid white;
+                width: 200px;
+                height: 350px;
+                display: grid;
+                grid-template-columns: 1fr 9fr 1fr;
+                grid-template-rows: 3fr 1fr 5fr; 
+                grid grid-template-areas: 
+                    "a b a"
+                    "a b a"
+                    "a b a";
+                background: #666666;
+
+            }
+            
+            .profileMenuBox{
+                box-sizing: border-box;
+                grid-column: 2;
+                grid-row: auto;
+                display: table;
+                height: 98%;
+                margin-bottom: 1%;
+                margin-top: 1%;
+                overflow: hidden;
+            }
+            
+            
+             .profileSocialLinksWrapper, .profileWrapper,
+             .profileNameWrapper{
+                display: table-cell;
+                vertical-align: middle;
+                text-decoration: none;
+            }
+            
+            .profileNameWrapper {
+                text-align: center;
+                color: rgb(255,255,255,0.4);
+            }
+            
+            .profileSocialLinksWrapper a {
+                text-decoration: none;
+            }
+            
+            .profileSocialLinksWrapper a:hover > div.socialBlock{
+                text-decoration: none;
+                background: rgb(255,255,255,0.1);
+            }
+            
+            .profileWrapper{
+                
+                height: 100px;
+                display: block;
+                border: 1px solid orange;
+                border-radius: 100%;
+                overflow: hidden;
+            }
+            
+            .profilePic a{
+                text-decoration: none;
+            }
+            
+            .profilePic a:hover{
+                background:rgb(0,0,0,0.1);
+            }
+            
+            img#profilePic{
+                margin-left: auto;
+                margin-right: auto;
+                color: red;
+                width: 100px;
+                height: 100px;
+            }
+            
+            #profilePic{
+                margin-left: auto;
+                margin-right: auto;
+                width:auto;
+            }
+            
+            socialLink{
+                background:rgb(255,255,255,0.1);
+
+            }
+            
+            .socialBlock{
+                background:rgb(255,255,255,0.1);
+                display: block;
+                border-bottom: 2px solid rgb(0,0,0,0.1);
+                border-top: 2px solid rgb(255,255,255,0.1); 
+            }
+            
+            #socialLinks{
+                border-radius: 4px 10px 4px 15px;
+                border: 2px solid rgb(255,255,0,0.4);
+                background: rgb(0,0,0,0.05);
+            }
+            
+            .socialLink img{
+                display: table-cell;
+                width: 32px;
+                height: 32px;
+            }
+            
+            .socialLink p{
+                color: white;
+                margin-left: 20px;
+                overflow: hidden;
+            }
+            
+            div.socialLink{
+                text-align: left;
+                overflow: hidden;              
+                display: table-cell;
+                vertical-align: middle;
+            }
+            
+            #name{
                 
             }
         </style>
@@ -33,15 +163,58 @@
     </head>
     <body>
         <div class ="testDiv">
-            <div class="MenuBox">
-                <div class="profileImageBox">
-                    <img src="" alt="pic of me"/>
+            <div class="sideMenuContainer">
+                <div class="MenuBox">
+                    <div id="profilePic" class="profileMenuBox">
+                            <div class="profileWrapper">
+                                <a href="#">
+                                    <img  id="profilePic" src="media/profile.png" alt="pic of me"/>
+                                </a>
+                            </div>
+                    </div>
+                    <div id="nameBox" class="profileMenuBox">
+                                    <div class="profileNameWrapper">
+                                        <h2 id="name">Aiden Lilley</h2>
+                        </div>
+                    </div>
+                    <div id="socialLinks" class="profileMenuBox">
+                        <div class="profileSocialLinksWrapper">
+                            <a  href="https://www.facebook.com/aidenlilley">
+                            <div class="socialBlock">
+                                    <div class="socialLink">
+                                            <img src="media/fb-icon.png" alt="pic Of FaceBook"/>                                    
+                                        </div>
+                                        <div class="socialLink">
+                                            <p>FaceBook</p>
+                                        </div>   
+                                </div>
+                            </a>
+                            <a href="#">    
+                            <div class="socialBlock">
+                                    <div class="socialLink">
+                                        <img src="media/tw-icon.png" alt="pic Of Twitter"/>                                    
+                                    </div>
+                                    <div class="socialLink">
+                                        <p>Twitter</p>
+                                    </div>
+                            </div>
+                            </a>
+                            <a href="https://www.instagram.com/aidenlilley">
+                            <div class="socialBlock">
+                                    <div class="socialLink">
+                                        <img src="media/in-icon.png" alt="pic Of LinkdIn"/>                                    
+                                    </div>
+                                    <div class="socialLink">
+                                        <p>LinkedIn</p>
+                                    </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div id="nameBox" class="profileImageBox">
-                    <img src="" alt="pic of me"/>
+            <div class="tab">
+                <div id="pullTab">
                 </div>
-                <div class="profileImageBox">
-                    <img src="" alt="pic of me"/>
                 </div>
             </div>
         </div>
